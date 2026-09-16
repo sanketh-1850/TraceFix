@@ -1,0 +1,19 @@
+# Optional isolated local server. The existing phpMyAdmin server needs no Docker.
+services:
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-TraceFix_DB}
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:-}
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "1"
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - tracefix_db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  tracefix_db:
