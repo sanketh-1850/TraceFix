@@ -2,11 +2,94 @@
 
 TraceFix is a planned target-aware Agent-as-a-Judge optimizer. It will investigate
 agent traces, propose controlled configuration changes, and evaluate candidates
-before promotion. The current implementation covers the Epic 0 foundation;
-target-agent and Judge behavior belong to later epics.
+before promotion. The current implementation includes the Epic 0 foundation and
+Epic 1's controlled order-support target agent. Judge behavior belongs to later epics.
 
 See [Epic 0 verification](docs/EPIC0_STATUS.md) for completed checks and environment
 adjustments.
+
+## Order-support target agent
+
+Epic 1 uses synthetic customers, products, orders, and local support policies. Its
+four read-only tools are document search, record lookup, decimal arithmetic, and
+exact policy lookup. The LangGraph agent decides which tools to call and returns a
+readable answer, structured facts, and source/observation IDs.
+
+After the local MariaDB server and Ollama are running:
+
+```powershell
+./scripts/dev.ps1 db-init
+./scripts/dev.ps1 seed
+./scripts/dev.ps1 target-demo
+./scripts/dev.ps1 eval-target
+```
+
+The new migration creates `target_customers`, `target_products`, `target_orders`,
+and `target_order_items`. Seeding adds 10 customers, 8 products, 30 orders, and 31
+line items. Rerunning the seed is safe: matching records are retained; any conflicting
+fixture aborts the entire seed transaction without replacing existing records.
+
+After refreshing the editable package (`.venv/Scripts/python.exe -m pip install -e .`),
+the equivalent entry points and individual-task options are:
+
+```powershell
+.venv/Scripts/tracefix-seed.exe
+.venv/Scripts/tracefix-run-target.exe --task-id T18
+.venv/Scripts/tracefix-run-target.exe --prompt 'Read RETURN-001. Return facts named return_days.'
+.venv/Scripts/tracefix-eval-target.exe --subset easy
+.venv/Scripts/tracefix-eval-target.exe --subset all
+```
+
+Use `--model qwen3:8b` for an explicit model override and `--config` for a different
+agent configuration. There is no automatic model fallback. `--output-dir` selects
+where to save a run or evaluation. Module equivalents are
+`python -m tracefix.target_agent.cli` and `python -m tracefix.evaluation.runner`.
+The CLI returns a nonzero exit code for an incomplete run or any failed evaluation
+task; evaluation continues through the workload and preserves failures in its summary.
+
+The versioned configuration is `configs/agents/order_support.json`. Defaults are 10
+model calls (including one possible answer-format repair), 12 tool executions, two
+retries after the same tool/arguments fail, and a 300-second deadline. Calls execute
+sequentially. A timed-out database read may finish in the background within its database
+I/O timeout; tool execution never mutates business records. Ollama uses the existing
+8192-token context, temperature 0, and seed 42. Target runs explicitly enable reasoning
+and allow 2048 output tokens: the initial disabled-thinking/512-token pilot exhausted
+its budget before calling a tool with this Qwen3 template. The standalone Epic 0 smoke
+script retains its own settings. Every target run records its effective model settings.
+
+Ground truth is in `data/tasks/order_support.jsonl`, with 10 easy tasks, 8 multi-tool
+tasks, and 2 recovery/missing-information tasks. The agent receives only the task ID
+and question; expected facts, source requirements, and scoring rules are kept outside
+its context. A deterministic scorer checks structured facts and retrieved evidence,
+including calculator results where required. It does not certify every sentence of
+the prose answer. A completed agent run can still receive a failing correctness score.
+
+Run artifacts are stored under `artifacts/target/`, and evaluations under
+`artifacts/evaluations/<id>/`. Records contain public task input, messages, tool calls
+and observations, final answers, explicit terminal reasons, configuration/data hashes,
+tokens, and timing. They exclude database credentials and model reasoning text.
+Missing token metrics remain null. Configuration hashes identify the prompt, tool
+descriptions, and limits; data hashes include actual business records and policy text.
+This local record format prepares for Epic 2; it does not yet send traces to Langfuse.
+
+To demonstrate failure handling with a labelled, artificial record-tool outage:
+
+```powershell
+.venv/Scripts/python.exe scripts/demo_target_failure.py
+```
+
+This runs the live model with fault injection, saves the failed task separately, and
+returns success only when the injected error was observed and the task failed scoring.
+It is excluded from baseline accuracy results and does not modify database records.
+
+Default tests mock inference and use SQLite for isolated business-tool tests. Live
+MariaDB tests create and remove only uniquely named disposable databases. Run these with:
+
+```powershell
+.venv/Scripts/python.exe -m pytest -m integration -k 'database or migration or isolated_downgrade'
+```
+
+See [Epic 1 verification](docs/EPIC1_STATUS.md) for recorded live results and limitations.
 
 ## Local setup
 
@@ -131,8 +214,9 @@ and mocked inference success/failure paths. Live checks are opt-in:
 ## Layout and plan
 
 `src/tracefix/` separates `target_agent`, `judge`, `diagnostics`, `telemetry`,
-`optimization`, `evaluation`, `persistence`, and `common`. The first six are package
-boundaries reserved for future epics. Manual diagnostics live in `scripts/`; automated
+`optimization`, `evaluation`, `persistence`, and `common`. Target execution and baseline
+evaluation are implemented; Judge, diagnostics, telemetry, and optimization remain
+boundaries for future epics. Manual diagnostics live in `scripts/`; automated
 tests live in `tests/unit/` and `tests/integration/`.
 
 See [project context](docs/PROJECT_CONTEXT.md) for current decisions and the

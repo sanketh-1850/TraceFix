@@ -1,0 +1,12 @@
+{
+  "task_id": "T01",
+  "success": false,
+  "reasons": [
+    "incorrect_fact:status",
+    "missing_required_sources"
+  ],
+  "expected_tools_used": true,
+  "tools_used": [
+    "query_records"
+  ]
+}

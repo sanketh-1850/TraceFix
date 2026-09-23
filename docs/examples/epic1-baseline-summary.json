@@ -1,0 +1,366 @@
+{
+  "dataset_hash": "49243c448da7eba70f6858619fe6267f918a0d383e7832ffcb2e54ed77a7232b",
+  "config_hash": "a3e7f453004c841bce755c258cbe60597910d602b0f01728b80b902834d763c0",
+  "data_hash": "02d4f643e7b6d7a735ef6c3c6b8b11ccaf43aeecb8c6f8f7b11133d7df072760",
+  "model": "qwen3:4b",
+  "complete": true,
+  "total": 20,
+  "passed": 14,
+  "easy_passed": 10,
+  "easy_total": 10,
+  "items": [
+    {
+      "task_id": "T01",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "query_records"
+      ],
+      "run_id": "bdc50bb741564efeb41fa1e2cc90e19a",
+      "run_file": "bdc50bb741564efeb41fa1e2cc90e19a.json",
+      "difficulty": "easy",
+      "output_tokens": 1480,
+      "tool_calls": 1,
+      "latency_ms": 29790.422,
+      "terminal_reason": "completed",
+      "input_tokens": 2019
+    },
+    {
+      "task_id": "T02",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "query_records"
+      ],
+      "run_id": "cdb7c6a3443640aba0ca937a91608b97",
+      "run_file": "cdb7c6a3443640aba0ca937a91608b97.json",
+      "difficulty": "easy",
+      "output_tokens": 1400,
+      "tool_calls": 1,
+      "latency_ms": 27783.208,
+      "terminal_reason": "completed",
+      "input_tokens": 2056
+    },
+    {
+      "task_id": "T03",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "query_records"
+      ],
+      "run_id": "959d60882fc54596b30aafdce4a4dd7d",
+      "run_file": "959d60882fc54596b30aafdce4a4dd7d.json",
+      "difficulty": "easy",
+      "output_tokens": 1051,
+      "tool_calls": 1,
+      "latency_ms": 20983.376,
+      "terminal_reason": "completed",
+      "input_tokens": 1871
+    },
+    {
+      "task_id": "T04",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "query_records"
+      ],
+      "run_id": "9fd2ee4ebd6f49a289a0299bba7f3e03",
+      "run_file": "9fd2ee4ebd6f49a289a0299bba7f3e03.json",
+      "difficulty": "easy",
+      "output_tokens": 876,
+      "tool_calls": 1,
+      "latency_ms": 17840.68,
+      "terminal_reason": "completed",
+      "input_tokens": 1985
+    },
+    {
+      "task_id": "T05",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "query_records"
+      ],
+      "run_id": "2cac1ed2d2fa4fcb85b86121958984ae",
+      "run_file": "2cac1ed2d2fa4fcb85b86121958984ae.json",
+      "difficulty": "easy",
+      "output_tokens": 1036,
+      "tool_calls": 1,
+      "latency_ms": 20914.013,
+      "terminal_reason": "completed",
+      "input_tokens": 2134
+    },
+    {
+      "task_id": "T06",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "lookup_policy"
+      ],
+      "run_id": "dffe10c98a59408a9a9c3ca25df78232",
+      "run_file": "dffe10c98a59408a9a9c3ca25df78232.json",
+      "difficulty": "easy",
+      "output_tokens": 738,
+      "tool_calls": 1,
+      "latency_ms": 15098.519,
+      "terminal_reason": "completed",
+      "input_tokens": 1946
+    },
+    {
+      "task_id": "T07",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "lookup_policy"
+      ],
+      "run_id": "05bed11e56f744cd9dcc0e618a3fc14f",
+      "run_file": "05bed11e56f744cd9dcc0e618a3fc14f.json",
+      "difficulty": "easy",
+      "output_tokens": 2231,
+      "tool_calls": 1,
+      "latency_ms": 44446.044,
+      "terminal_reason": "completed",
+      "input_tokens": 2175
+    },
+    {
+      "task_id": "T08",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "search_documents"
+      ],
+      "run_id": "7056c75e54cd4d1187330b225626c3ea",
+      "run_file": "7056c75e54cd4d1187330b225626c3ea.json",
+      "difficulty": "easy",
+      "output_tokens": 1567,
+      "tool_calls": 1,
+      "latency_ms": 31603.558,
+      "terminal_reason": "completed",
+      "input_tokens": 2610
+    },
+    {
+      "task_id": "T09",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "calculator"
+      ],
+      "run_id": "e03a97dc398d4e3bb50dd801fa5360aa",
+      "run_file": "e03a97dc398d4e3bb50dd801fa5360aa.json",
+      "difficulty": "easy",
+      "output_tokens": 1781,
+      "tool_calls": 1,
+      "latency_ms": 35399.809,
+      "terminal_reason": "completed",
+      "input_tokens": 2489
+    },
+    {
+      "task_id": "T10",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "calculator"
+      ],
+      "run_id": "3390c00de77d4464800c2d09044b3ea4",
+      "run_file": "3390c00de77d4464800c2d09044b3ea4.json",
+      "difficulty": "easy",
+      "output_tokens": 873,
+      "tool_calls": 1,
+      "latency_ms": 17708.673,
+      "terminal_reason": "completed",
+      "input_tokens": 1830
+    },
+    {
+      "task_id": "T11",
+      "success": false,
+      "reasons": [
+        "incomplete:truncated_generation",
+        "missing_answer"
+      ],
+      "expected_tools_used": false,
+      "tools_used": [],
+      "run_id": "36844d9f767e49038f6a98e9c2e60a57",
+      "run_file": "36844d9f767e49038f6a98e9c2e60a57.json",
+      "difficulty": "multi",
+      "output_tokens": 2048,
+      "tool_calls": 0,
+      "latency_ms": 39954.645,
+      "terminal_reason": "truncated_generation",
+      "input_tokens": 647
+    },
+    {
+      "task_id": "T12",
+      "success": false,
+      "reasons": [
+        "incomplete:truncated_generation",
+        "missing_answer"
+      ],
+      "expected_tools_used": false,
+      "tools_used": [],
+      "run_id": "1ebdee4e85d04e72bfda09b32a04d785",
+      "run_file": "1ebdee4e85d04e72bfda09b32a04d785.json",
+      "difficulty": "multi",
+      "output_tokens": 2048,
+      "tool_calls": 0,
+      "latency_ms": 40237.337,
+      "terminal_reason": "truncated_generation",
+      "input_tokens": 634
+    },
+    {
+      "task_id": "T13",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "lookup_policy",
+        "query_records"
+      ],
+      "run_id": "b9d95c73160847ef97d64206baf57dac",
+      "run_file": "b9d95c73160847ef97d64206baf57dac.json",
+      "difficulty": "multi",
+      "output_tokens": 2037,
+      "tool_calls": 2,
+      "latency_ms": 40860.809,
+      "terminal_reason": "completed",
+      "input_tokens": 3439
+    },
+    {
+      "task_id": "T14",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "lookup_policy",
+        "query_records"
+      ],
+      "run_id": "8705b1cf27a4402f81a8e8aef436d5fb",
+      "run_file": "8705b1cf27a4402f81a8e8aef436d5fb.json",
+      "difficulty": "multi",
+      "output_tokens": 2027,
+      "tool_calls": 2,
+      "latency_ms": 40959.005,
+      "terminal_reason": "completed",
+      "input_tokens": 2886
+    },
+    {
+      "task_id": "T15",
+      "success": false,
+      "reasons": [
+        "incomplete:truncated_generation",
+        "missing_answer"
+      ],
+      "expected_tools_used": false,
+      "tools_used": [],
+      "run_id": "0befdbb19b514f22a5ac410757cc6e4e",
+      "run_file": "0befdbb19b514f22a5ac410757cc6e4e.json",
+      "difficulty": "multi",
+      "output_tokens": 2048,
+      "tool_calls": 0,
+      "latency_ms": 40056.382,
+      "terminal_reason": "truncated_generation",
+      "input_tokens": 646
+    },
+    {
+      "task_id": "T16",
+      "success": false,
+      "reasons": [
+        "missing_calculation_evidence"
+      ],
+      "expected_tools_used": false,
+      "tools_used": [
+        "lookup_policy",
+        "query_records"
+      ],
+      "run_id": "b25d39939e3a4b6281c0f55bb95b01d6",
+      "run_file": "b25d39939e3a4b6281c0f55bb95b01d6.json",
+      "difficulty": "multi",
+      "output_tokens": 2365,
+      "tool_calls": 2,
+      "latency_ms": 47631.733,
+      "terminal_reason": "completed",
+      "input_tokens": 3424
+    },
+    {
+      "task_id": "T17",
+      "success": false,
+      "reasons": [
+        "incomplete:truncated_generation",
+        "missing_answer"
+      ],
+      "expected_tools_used": false,
+      "tools_used": [],
+      "run_id": "0b7ed54c30694bebb5b392fde0508d64",
+      "run_file": "0b7ed54c30694bebb5b392fde0508d64.json",
+      "difficulty": "multi",
+      "output_tokens": 2048,
+      "tool_calls": 0,
+      "latency_ms": 40056.534,
+      "terminal_reason": "truncated_generation",
+      "input_tokens": 646
+    },
+    {
+      "task_id": "T18",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "calculator",
+        "query_records"
+      ],
+      "run_id": "c2e13335090c4f76b46178c856fc929f",
+      "run_file": "c2e13335090c4f76b46178c856fc929f.json",
+      "difficulty": "multi",
+      "output_tokens": 3887,
+      "tool_calls": 2,
+      "latency_ms": 80297.259,
+      "terminal_reason": "completed",
+      "input_tokens": 7692
+    },
+    {
+      "task_id": "T19",
+      "success": true,
+      "reasons": [],
+      "expected_tools_used": true,
+      "tools_used": [
+        "query_records"
+      ],
+      "run_id": "946c5d013b6e40889f409100023333da",
+      "run_file": "946c5d013b6e40889f409100023333da.json",
+      "difficulty": "recovery",
+      "output_tokens": 1757,
+      "tool_calls": 1,
+      "latency_ms": 35099.366,
+      "terminal_reason": "completed",
+      "input_tokens": 2565
+    },
+    {
+      "task_id": "T20",
+      "success": false,
+      "reasons": [
+        "incomplete:truncated_generation",
+        "missing_answer"
+      ],
+      "expected_tools_used": false,
+      "tools_used": [],
+      "run_id": "5f1127bde59b489e82e4e753d41810af",
+      "run_file": "5f1127bde59b489e82e4e753d41810af.json",
+      "difficulty": "recovery",
+      "output_tokens": 2048,
+      "tool_calls": 0,
+      "latency_ms": 40090.874,
+      "terminal_reason": "truncated_generation",
+      "input_tokens": 654
+    }
+  ],
+  "success_rate": 0.7,
+  "artifact_directory": "artifacts/epic1-baseline"
+}

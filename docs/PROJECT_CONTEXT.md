@@ -12,12 +12,44 @@ The document says its technical references were checked in September 2026. That 
 
 ## Current implementation status
 
+Epic 1 was implemented on 2026-09-17 following the user-approved order-support plan.
+The domain is synthetic order support; target business data uses separate MariaDB
+tables in `TraceFix_DB`. Migration `0002_target_data` is current. Fixtures contain
+10 customers, 8 products, 30 orders, 31 line items, and six local policy documents.
+The agent returns a readable answer plus structured facts and evidence IDs.
+
+The four read-only tools are `search_documents`, `query_records`, `calculator`,
+and `lookup_policy`. A bounded LangGraph ReAct loop records local runs; no Langfuse
+integration or Judge exists yet. Prompts, tool descriptions, and limits are in
+`configs/agents/order_support.json`. Target runs use Qwen3 4B with reasoning enabled
+and a 2048-token output limit: the initial disabled-thinking/512-token pilot truncated
+before tool calling with the installed template. This adjustment is explicit and
+versioned; Epic 0 smoke settings remain separate. Other defaults remain 8192 context
+tokens, temperature 0, seed 42, 10 model calls, 12 tool executions, two retries after
+identical tool failures, one answer-format repair, and a 300-second deadline.
+
+Verification: 41 unit tests and 3 live MariaDB integration tests pass. The live fixed
+20-task baseline scored 14/20, including 10/10 easy tasks (gate: at least 8/10).
+T18 demonstrates query -> calculator -> final answer across three model calls.
+Five tasks truncated and one omitted required calculator evidence; these failures
+are preserved. Ground truth is in the evaluator's versioned task dataset and is never
+passed to the target agent. See [Epic 1 verification](EPIC1_STATUS.md) and its committed
+sample records. Epic 2 is still needed to complete M1 observability.
+
+Commands: `tracefix-seed`, `tracefix-run-target`, and `tracefix-eval-target`, plus the
+`seed`, `target-demo`, and `eval-target` PowerShell helper tasks. Live failure injection
+is available through `scripts/demo_target_failure.py` and saved separately from the
+accuracy benchmark. Full run outputs remain in the ignored `artifacts` directory.
+
+### Epic 0 foundation history
+
 Epic 0 was implemented and verified on 2026-09-16 with the adjustments below.
 The repository now contains the package foundation, environment settings, dependency
 lock, SQLAlchemy/Alembic setup, database initialization and smoke commands, local
 Ollama diagnostics, tests, and setup documentation. `TraceFix_DB` exists with
 `project_metadata` and `alembic_version`; migration revision `0001_project_metadata`
-is current. No target-agent or Judge implementation from later epics exists yet.
+was current at that milestone. The target-agent implementation was added in Epic 1
+as described above; Judge implementation remains future work.
 
 Verification: 13 unit tests passed, 2 live MariaDB integration checks passed, and both
 Qwen3 4B and Qwen3 8B passed generation, tool-call round trip, and validated JSON

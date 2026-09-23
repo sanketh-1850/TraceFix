@@ -1,0 +1,535 @@
+{
+  "version": "order-support-data-v1",
+  "customers": [
+    {
+      "id": "C001",
+      "name": "Synthetic Customer 01",
+      "tier": "gold"
+    },
+    {
+      "id": "C002",
+      "name": "Synthetic Customer 02",
+      "tier": "standard"
+    },
+    {
+      "id": "C003",
+      "name": "Synthetic Customer 03",
+      "tier": "gold"
+    },
+    {
+      "id": "C004",
+      "name": "Synthetic Customer 04",
+      "tier": "standard"
+    },
+    {
+      "id": "C005",
+      "name": "Synthetic Customer 05",
+      "tier": "gold"
+    },
+    {
+      "id": "C006",
+      "name": "Synthetic Customer 06",
+      "tier": "standard"
+    },
+    {
+      "id": "C007",
+      "name": "Synthetic Customer 07",
+      "tier": "gold"
+    },
+    {
+      "id": "C008",
+      "name": "Synthetic Customer 08",
+      "tier": "standard"
+    },
+    {
+      "id": "C009",
+      "name": "Synthetic Customer 09",
+      "tier": "gold"
+    },
+    {
+      "id": "C010",
+      "name": "Synthetic Customer 10",
+      "tier": "standard"
+    }
+  ],
+  "products": [
+    {
+      "id": "P001",
+      "name": "Travel pouch",
+      "category": "accessories",
+      "price": "25.00"
+    },
+    {
+      "id": "P002",
+      "name": "Desk lamp",
+      "category": "electronics",
+      "price": "40.00"
+    },
+    {
+      "id": "P003",
+      "name": "Cable kit",
+      "category": "accessories",
+      "price": "15.00"
+    },
+    {
+      "id": "P004",
+      "name": "Headphones",
+      "category": "electronics",
+      "price": "80.00"
+    },
+    {
+      "id": "P005",
+      "name": "Phone stand",
+      "category": "accessories",
+      "price": "12.50"
+    },
+    {
+      "id": "P006",
+      "name": "Keyboard",
+      "category": "electronics",
+      "price": "100.00"
+    },
+    {
+      "id": "P007",
+      "name": "Screen cloth",
+      "category": "accessories",
+      "price": "8.00"
+    },
+    {
+      "id": "P008",
+      "name": "Power bank",
+      "category": "electronics",
+      "price": "60.00"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-001",
+      "customer_id": "C001",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-01",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-002",
+      "customer_id": "C002",
+      "status": "processing",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-003",
+      "customer_id": "C003",
+      "status": "delayed",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-004",
+      "customer_id": "C004",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-08-01",
+      "condition": "used"
+    },
+    {
+      "id": "ORD-005",
+      "customer_id": "C005",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-10",
+      "condition": "damaged"
+    },
+    {
+      "id": "ORD-006",
+      "customer_id": "C006",
+      "status": "cancelled",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-007",
+      "customer_id": "C007",
+      "status": "shipped",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-008",
+      "customer_id": "C008",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-08-01",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-009",
+      "customer_id": "C009",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-05",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-010",
+      "customer_id": "C010",
+      "status": "processing",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-011",
+      "customer_id": "C001",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-01",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-012",
+      "customer_id": "C002",
+      "status": "processing",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-013",
+      "customer_id": "C003",
+      "status": "delayed",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-014",
+      "customer_id": "C004",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-08-01",
+      "condition": "used"
+    },
+    {
+      "id": "ORD-015",
+      "customer_id": "C005",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-10",
+      "condition": "damaged"
+    },
+    {
+      "id": "ORD-016",
+      "customer_id": "C006",
+      "status": "cancelled",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-017",
+      "customer_id": "C007",
+      "status": "shipped",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-018",
+      "customer_id": "C008",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-08-01",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-019",
+      "customer_id": "C009",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-05",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-020",
+      "customer_id": "C010",
+      "status": "processing",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-021",
+      "customer_id": "C001",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-01",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-022",
+      "customer_id": "C002",
+      "status": "processing",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-023",
+      "customer_id": "C003",
+      "status": "delayed",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-024",
+      "customer_id": "C004",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-08-01",
+      "condition": "used"
+    },
+    {
+      "id": "ORD-025",
+      "customer_id": "C005",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-10",
+      "condition": "damaged"
+    },
+    {
+      "id": "ORD-026",
+      "customer_id": "C006",
+      "status": "cancelled",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-027",
+      "customer_id": "C007",
+      "status": "shipped",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-028",
+      "customer_id": "C008",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-08-01",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-029",
+      "customer_id": "C009",
+      "status": "delivered",
+      "ordered_on": "2026-07-20",
+      "delivered_on": "2026-09-05",
+      "condition": "unused"
+    },
+    {
+      "id": "ORD-030",
+      "customer_id": "C010",
+      "status": "processing",
+      "ordered_on": "2026-07-20",
+      "delivered_on": null,
+      "condition": "unused"
+    }
+  ],
+  "order_items": [
+    {
+      "order_id": "ORD-001",
+      "product_id": "P001",
+      "quantity": 2,
+      "unit_price": "25.00"
+    },
+    {
+      "order_id": "ORD-002",
+      "product_id": "P002",
+      "quantity": 1,
+      "unit_price": "40.00"
+    },
+    {
+      "order_id": "ORD-003",
+      "product_id": "P003",
+      "quantity": 3,
+      "unit_price": "15.00"
+    },
+    {
+      "order_id": "ORD-004",
+      "product_id": "P004",
+      "quantity": 1,
+      "unit_price": "80.00"
+    },
+    {
+      "order_id": "ORD-005",
+      "product_id": "P005",
+      "quantity": 2,
+      "unit_price": "12.50"
+    },
+    {
+      "order_id": "ORD-006",
+      "product_id": "P006",
+      "quantity": 1,
+      "unit_price": "100.00"
+    },
+    {
+      "order_id": "ORD-007",
+      "product_id": "P007",
+      "quantity": 1,
+      "unit_price": "8.00"
+    },
+    {
+      "order_id": "ORD-008",
+      "product_id": "P008",
+      "quantity": 1,
+      "unit_price": "60.00"
+    },
+    {
+      "order_id": "ORD-009",
+      "product_id": "P001",
+      "quantity": 3,
+      "unit_price": "25.00"
+    },
+    {
+      "order_id": "ORD-010",
+      "product_id": "P002",
+      "quantity": 2,
+      "unit_price": "40.00"
+    },
+    {
+      "order_id": "ORD-011",
+      "product_id": "P003",
+      "quantity": 2,
+      "unit_price": "15.00"
+    },
+    {
+      "order_id": "ORD-012",
+      "product_id": "P004",
+      "quantity": 1,
+      "unit_price": "80.00"
+    },
+    {
+      "order_id": "ORD-013",
+      "product_id": "P005",
+      "quantity": 3,
+      "unit_price": "12.50"
+    },
+    {
+      "order_id": "ORD-014",
+      "product_id": "P006",
+      "quantity": 1,
+      "unit_price": "100.00"
+    },
+    {
+      "order_id": "ORD-015",
+      "product_id": "P007",
+      "quantity": 2,
+      "unit_price": "8.00"
+    },
+    {
+      "order_id": "ORD-016",
+      "product_id": "P008",
+      "quantity": 1,
+      "unit_price": "60.00"
+    },
+    {
+      "order_id": "ORD-017",
+      "product_id": "P001",
+      "quantity": 1,
+      "unit_price": "25.00"
+    },
+    {
+      "order_id": "ORD-018",
+      "product_id": "P002",
+      "quantity": 1,
+      "unit_price": "40.00"
+    },
+    {
+      "order_id": "ORD-019",
+      "product_id": "P003",
+      "quantity": 3,
+      "unit_price": "15.00"
+    },
+    {
+      "order_id": "ORD-020",
+      "product_id": "P004",
+      "quantity": 2,
+      "unit_price": "80.00"
+    },
+    {
+      "order_id": "ORD-021",
+      "product_id": "P005",
+      "quantity": 2,
+      "unit_price": "12.50"
+    },
+    {
+      "order_id": "ORD-022",
+      "product_id": "P006",
+      "quantity": 1,
+      "unit_price": "100.00"
+    },
+    {
+      "order_id": "ORD-023",
+      "product_id": "P007",
+      "quantity": 3,
+      "unit_price": "8.00"
+    },
+    {
+      "order_id": "ORD-024",
+      "product_id": "P008",
+      "quantity": 1,
+      "unit_price": "60.00"
+    },
+    {
+      "order_id": "ORD-025",
+      "product_id": "P001",
+      "quantity": 2,
+      "unit_price": "25.00"
+    },
+    {
+      "order_id": "ORD-026",
+      "product_id": "P002",
+      "quantity": 1,
+      "unit_price": "40.00"
+    },
+    {
+      "order_id": "ORD-027",
+      "product_id": "P003",
+      "quantity": 1,
+      "unit_price": "15.00"
+    },
+    {
+      "order_id": "ORD-028",
+      "product_id": "P004",
+      "quantity": 1,
+      "unit_price": "80.00"
+    },
+    {
+      "order_id": "ORD-029",
+      "product_id": "P005",
+      "quantity": 3,
+      "unit_price": "12.50"
+    },
+    {
+      "order_id": "ORD-030",
+      "product_id": "P006",
+      "quantity": 2,
+      "unit_price": "100.00"
+    },
+    {
+      "order_id": "ORD-010",
+      "product_id": "P003",
+      "quantity": 1,
+      "unit_price": "15.00"
+    }
+  ]
+}

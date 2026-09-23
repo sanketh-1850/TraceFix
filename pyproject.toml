@@ -25,6 +25,9 @@ dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
 [project.scripts]
 tracefix-db = "tracefix.persistence.cli:main"
 tracefix-smoke-ollama = "tracefix.common.ollama_smoke:main"
+tracefix-seed = "tracefix.target_agent.cli:seed_main"
+tracefix-run-target = "tracefix.target_agent.cli:run_main"
+tracefix-eval-target = "tracefix.evaluation.runner:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
