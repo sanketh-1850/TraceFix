@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "tracefix"
 version = "0.1.0"
 description = "Target-aware agent diagnosis and controlled optimization"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.12,<3.14"
 dependencies = [
     "alembic>=1.16,<2",
     "langchain-ollama>=1,<2",
@@ -21,6 +21,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
+tau3 = []
 
 [project.scripts]
 tracefix-db = "tracefix.persistence.cli:main"
@@ -28,6 +29,7 @@ tracefix-smoke-ollama = "tracefix.common.ollama_smoke:main"
 tracefix-seed = "tracefix.target_agent.cli:seed_main"
 tracefix-run-target = "tracefix.target_agent.cli:run_main"
 tracefix-eval-target = "tracefix.evaluation.runner:main"
+tracefix-eval-target-a0 = "tracefix.evaluation.runner:a0_main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -38,7 +40,7 @@ addopts = "-ra -m 'not integration'"
 markers = ["integration: opt-in checks requiring live local services"]
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py312"
 line-length = 100
 
 [tool.ruff.lint]

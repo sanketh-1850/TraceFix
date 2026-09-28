@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "benchmark_snapshot_id": "target-a-order-support-v1",
+  "target_id": "target-a",
+  "dataset_version": "order-support-dataset-v1",
+  "evaluator_version": "order-support-scorer-v1",
+  "created_at": "2026-09-27",
+  "task_file": "data/tasks/order_support.jsonl",
+  "task_file_hash": "d86658dd2da7773a9ebeb161bc5655ddb758b7f039d3c2b17c3590d2937719b4",
+  "evaluator_file": "src/tracefix/evaluation/tasks.py",
+  "evaluator_file_hash": "045659a2927ba5024411f9f93db2c46a60f0381661006d099530ec676c01b49d",
+  "split_strategy": "Fixed 14/6 split selected before optimizer implementation; both splits contain easy, multi-tool, and recovery tasks and cover record, policy, search, and calculator tools.",
+  "optimizer_allowed_splits": [
+    "development"
+  ],
+  "final_held_out_split": "held_out",
+  "splits": {
+    "development": [
+      "T01",
+      "T02",
+      "T04",
+      "T05",
+      "T06",
+      "T08",
+      "T10",
+      "T11",
+      "T12",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T19"
+    ],
+    "held_out": [
+      "T03",
+      "T07",
+      "T09",
+      "T13",
+      "T18",
+      "T20"
+    ]
+  },
+  "content_hash": "11da7fbc9e32cb90944c8213f3aef326f8000966ea2438c5217b205f8dee16e8"
+}

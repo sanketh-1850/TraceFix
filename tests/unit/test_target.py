@@ -361,4 +361,8 @@ def test_evaluation_continues_after_infrastructure_failure(engine, tmp_path, mon
     assert calls == ["T01", "T02"]
     assert result["complete"] and result["passed"] == 1
     assert result["success_rate"] == 0.5
+    assert result["agent_version_id"] == "test"
+    assert result["evaluator_version"] == "order-support-scorer-v1"
+    assert result["metrics"]["failed"] == 1
+    assert result["metrics"]["model_calls"] == valid.model_calls
     assert "private connection detail" not in (tmp_path / "summary.json").read_text()

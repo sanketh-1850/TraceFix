@@ -8,6 +8,8 @@ from pydantic import Field
 from tracefix.target_agent.config import DATA_ROOT
 from tracefix.target_agent.schemas import StrictModel, TargetRunResult, TargetTask
 
+EVALUATOR_VERSION = "order-support-scorer-v1"
+
 
 class ExpectedFact(StrictModel):
     value: str | int | bool | None
@@ -40,6 +42,17 @@ def load_tasks() -> list[BenchmarkTask]:
     if len({task.task_id for task in tasks}) != len(tasks):
         raise ValueError("Duplicate task IDs")
     return tasks
+
+
+def select_tasks(
+    task_ids: list[str], tasks: list[BenchmarkTask] | None = None
+) -> list[BenchmarkTask]:
+    """Return tasks in the frozen split order and reject stale/unknown snapshot IDs."""
+    by_id = {task.task_id: task for task in (tasks or load_tasks())}
+    missing = set(task_ids) - set(by_id)
+    if missing:
+        raise ValueError(f"Benchmark snapshot contains unknown task IDs: {sorted(missing)}")
+    return [by_id[task_id] for task_id in task_ids]
 
 
 def fact_matches(expected: ExpectedFact, actual) -> bool:

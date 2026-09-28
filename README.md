@@ -2,8 +2,9 @@
 
 TraceFix is a planned target-aware Agent-as-a-Judge optimizer. It will investigate
 agent traces, propose controlled configuration changes, and evaluate candidates
-before promotion. The current implementation includes the Epic 0 foundation and
-Epic 1's controlled order-support target agent. Judge behavior belongs to later epics.
+before promotion. The current implementation includes the revised Epic 0 foundation
+and a frozen Epic 1 Target A baseline around the controlled order-support agent. Judge
+behavior belongs to later epics.
 
 See [Epic 0 verification](docs/EPIC0_STATUS.md) for completed checks and environment
 adjustments.
@@ -22,6 +23,7 @@ After the local MariaDB server and Ollama are running:
 ./scripts/dev.ps1 seed
 ./scripts/dev.ps1 target-demo
 ./scripts/dev.ps1 eval-target
+./scripts/dev.ps1 baseline-a0
 ```
 
 The new migration creates `target_customers`, `target_products`, `target_orders`,
@@ -38,6 +40,7 @@ the equivalent entry points and individual-task options are:
 .venv/Scripts/tracefix-run-target.exe --prompt 'Read RETURN-001. Return facts named return_days.'
 .venv/Scripts/tracefix-eval-target.exe --subset easy
 .venv/Scripts/tracefix-eval-target.exe --subset all
+.venv/Scripts/tracefix-eval-target-a0.exe --split development
 ```
 
 Use `--model qwen3:8b` for an explicit model override and `--config` for a different
@@ -46,6 +49,16 @@ where to save a run or evaluation. Module equivalents are
 `python -m tracefix.target_agent.cli` and `python -m tracefix.evaluation.runner`.
 The CLI returns a nonzero exit code for an incomplete run or any failed evaluation
 task; evaluation continues through the workload and preserves failures in its summary.
+The frozen A0 command instead returns success when the entire baseline was recorded,
+because failed benchmark tasks are expected evidence rather than command failures.
+
+The revised plan treats this agent as Target A. Its machine-readable inventory is in
+`configs/targets/target_a/manifest.json`; the immutable `target-a:a0` record is in
+`configs/targets/target_a/versions/a0.json`. The frozen benchmark snapshot separates
+14 development tasks from six final held-out tasks. `baseline-a0` verifies the target,
+manifest, dataset, and evaluator hashes before running the development split. See
+[`docs/target_a_inventory.md`](docs/target_a_inventory.md) for the full boundary and
+split rationale.
 
 The versioned configuration is `configs/agents/order_support.json`. Defaults are 10
 model calls (including one possible answer-format repair), 12 tool executions, two
@@ -93,8 +106,9 @@ See [Epic 1 verification](docs/EPIC1_STATUS.md) for recorded live results and li
 
 ## Local setup
 
-Use Python 3.11 or 3.12 (this workspace uses 3.12.10). From the repository root in
-PowerShell:
+Use Python 3.12 or 3.13 (this workspace uses 3.12.10). Python 3.12 is the project
+baseline so later tau3 integration does not require a runtime migration. From the
+repository root in PowerShell:
 
 ```powershell
 python -m venv .venv
@@ -213,12 +227,14 @@ and mocked inference success/failure paths. Live checks are opt-in:
 
 ## Layout and plan
 
-`src/tracefix/` separates `target_agent`, `judge`, `diagnostics`, `telemetry`,
-`optimization`, `evaluation`, `persistence`, and `common`. Target execution and baseline
-evaluation are implemented; Judge, diagnostics, telemetry, and optimization remain
-boundaries for future epics. Manual diagnostics live in `scripts/`; automated
-tests live in `tests/unit/` and `tests/integration/`.
+`src/tracefix/` separates `target_agent`, `targets`, `judge`, `diagnostics`, `telemetry`,
+`optimization`, `evaluation`, `persistence`, and `common`. `contracts.py` declares the
+early `TraceProvider`, `TargetAdapter`, and `EvaluationAdapter` boundaries. Target A has
+its own package; the tau3 package is reserved for the later pinned Target B integration.
+Target execution and baseline evaluation are implemented; Judge, diagnostics, telemetry,
+and optimization remain boundaries for future epics. Manual diagnostics live in
+`scripts/`; automated tests live in `tests/unit/` and `tests/integration/`.
 
 See [project context](docs/PROJECT_CONTEXT.md) for current decisions and the
-[retained implementation plan](docs/reference/agent-as-a-judge-implementation-plan.md)
-for detailed acceptance criteria. The original document is preserved unchanged.
+[updated retained implementation plan](docs/reference/agent-as-a-judge-implementation-plan-updated.md)
+for current acceptance criteria. The original document is preserved for revision history.

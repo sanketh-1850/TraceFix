@@ -5,10 +5,17 @@ Verified on 2026-09-16 in the TraceFix workspace.
 Epic 0 is implemented and verified for the existing MariaDB server and Python 3.12
 environment, with the deviations from the reference plan documented below.
 
+The revised plan was reconciled on 2026-09-27. The package now requires Python 3.12-3.13,
+declares early `TraceProvider`, `TargetAdapter`, and `EvaluationAdapter` protocols, and
+has separate package boundaries for Target A and the future tau3 Target B. The tau3
+dependency group is intentionally empty until an exact release is selected in Epic 14.
+The reconciliation passed 45 offline unit tests, all five disposable/live MariaDB
+integration checks, Ruff, PowerShell parsing, and dependency validation.
+
 ## Implemented foundation
 
-- Editable Python package with separate target, Judge, diagnostics, telemetry,
-  optimization, evaluation, persistence, and common modules.
+- Editable Python package with separate target, target-integration, Judge, diagnostics,
+  telemetry, optimization, evaluation, persistence, and common modules.
 - Environment-driven settings, protected secret values, `server.env` excluded from
   Git, an example env file, logging, bounded dependency ranges, and a resolved
   development dependency lock file.
@@ -44,9 +51,9 @@ explicitly rejected. These are setup smoke checks, not Judge or target benchmark
 ## Adjustments from the reference plan
 
 The user's supplied phpMyAdmin connection is backed by MariaDB, so it replaces
-PostgreSQL for this implementation. Python 3.12.10 is used because 3.11 was not
-installed; the package declares Python 3.11–3.13 compatibility, with runtime validation
-performed on 3.12 only. The optional Docker profile uses MariaDB on localhost:3307
+PostgreSQL for this implementation. Python 3.12.10 is used and the package now declares
+Python 3.12–3.13 compatibility to align with the revised plan and future tau3 work. The
+optional Docker profile uses MariaDB on localhost:3307
 and has not been exercised as a running container.
 
 The original implementation plan is unchanged. Later epics remain unimplemented;

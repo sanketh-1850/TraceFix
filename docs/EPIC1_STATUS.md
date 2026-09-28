@@ -1,5 +1,31 @@
 # Epic 1 verification
 
+## Revised Epic 1 baseline freeze
+
+The updated plan redefines Epic 1 as auditing, freezing, and baselining the existing
+agent as Target A. That delta was completed on 2026-09-27:
+
+- `docs/target_a_inventory.md` documents the real model, graph, prompt contract, tools,
+  schemas, dependencies, budgets, retry/stop rules, ground truth, and mutation boundary.
+- `configs/targets/target_a/manifest.json` exports the four live tool schemas and marks
+  every tool read-only.
+- `target-a:a0` is an immutable, hash-verified version containing the exact prompt,
+  descriptions, budgets, model settings, implementation identity, and allowed mutations.
+- Benchmark `target-a-order-support-v1` fixes dataset and evaluator versions and a
+  stratified 14-task development / 6-task held-out split. Only development is approved
+  as future optimizer feedback.
+- `baseline-a0` verifies all frozen hashes, reruns the exact development workload, and
+  records target/task/version identity plus correctness, tokens, calls, errors, retries,
+  latency, and terminal reasons.
+- The live development baseline completed 14/14 executions and passed 9/14 tasks. Four
+  failures were output-limit truncations and one omitted required calculator evidence.
+  The committed summary and two successful/two failed representative trajectories are
+  under `docs/examples/`.
+- The revised integrity, split, manifest, and metric behavior is covered by the 45-test
+  offline suite; all five opt-in MariaDB integration checks also pass.
+
+The earlier implementation evidence follows and remains valid history.
+
 Implemented on 2026-09-17: a local, controlled order-support ReAct agent using
 LangGraph, Ollama Qwen3 4B, and the existing MariaDB server.
 

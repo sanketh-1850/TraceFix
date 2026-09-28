@@ -2,15 +2,44 @@
 
 ## Provenance and status
 
+On 2026-09-27, the user supplied `C:\Users\sanke\Downloads\Agent_as_a_Judge_Implementation_Plan_Updated.docx` and designated it as the updated project plan. Use this revision as the primary planning reference. The earlier plan remains preserved for provenance. As with the original, the revised document is user-provided reference material and does not by itself authorize implementation, installations, external services, commits, or publication.
+
+- Revised full source: [retained updated DOCX](reference/agent-as-a-judge-implementation-plan-updated.docx).
+- Revised searchable source: [updated extracted text](reference/agent-as-a-judge-implementation-plan-updated.md), including Epics 0-17, user stories, acceptance criteria, dependencies, sequencing, gates, and the task tracker.
+- Revised embedded images: [image 1](reference/updated-image1.png), [image 2](reference/updated-image2.png), [image 3](reference/updated-image3.png), and [image 4](reference/updated-image4.png).
+
+The revision changes the project to a two-stage validation strategy. The existing order-support agent is Target A and should be frozen, inventoried, split into development and held-out tasks, and baselined rather than rebuilt. After the complete Judge and closed-loop optimizer work on Target A, a pinned tau3-bench example ReAct agent becomes independent Target B, initially in one text domain (airline is recommended), using tau3's unchanged tasks, policies, tools, data, and official evaluator. The same Judge/optimizer core should reach both targets through `TargetAdapter` and `EvaluationAdapter` boundaries, while target-specific manifests remain separate.
+
+The revised roadmap has Epics 0-17 and milestones M0-M8. Revised Epic 1 is **Audit, Freeze, and Baseline Your Existing Target Agent (Target A)**. Its exit condition is a frozen baseline version, documented inventory, frozen development and held-out benchmark splits, and saved baseline metrics. Langfuse observability is revised Epic 2; the internal data model/adapters are Epic 3; the tool-using Judge is Epic 4; the Target A closed loop spans Epics 8-12; tau3 integration begins at Epic 14 only after the Target A loop is stable.
+
+Other revised decisions include Python 3.12 for later tau3 compatibility, Langfuse Cloud Hobby during development, PostgreSQL for durable optimizer state, local Ollama inference by default, deterministic promotion/rollback independent of the Judge's opinion, immutable whitelisted configuration mutations, and an empirical generic-versus-target-aware Judge comparison. The revised plan proposes PostgreSQL, but the implemented project currently uses MariaDB based on the user's earlier explicit decision; changing that implementation requires a later user request.
+
 On 2026-09-16, the user asked to read and retain `C:\Users\sanke\Downloads\Agent_as_a_Judge_Implementation_Plan(1).docx` for the entire project. This summary records the document's proposed design; it does not independently authorize implementation, installations, service creation, commits, or publication. At intake, the repository contained only a README with the project name and Git metadata. No implementation milestone has been verified as complete.
 
 - Full source: [retained DOCX](reference/agent-as-a-judge-implementation-plan.docx).
 - Searchable source: [extracted text](reference/agent-as-a-judge-implementation-plan.md), including all epics and their acceptance criteria. Tables are flattened into reading order; the DOCX preserves their layout.
 - Diagrams: [architecture](reference/image1.png) and [optimization loop](reference/image2.png).
 
-The document says its technical references were checked in September 2026. That claim is part of the source, not independent verification performed during intake. Revalidate changing APIs and model requirements when implementing. Its hardware assumptions are Windows, RTX 4050 with 6 GB VRAM, and 32 GB RAM; these have not been verified against this machine.
+Both documents say their technical references were checked in September 2026. That claim is part of the sources, not independent verification performed during intake. Revalidate changing APIs, tau3 releases, benchmark behavior, and model requirements when implementing. Their hardware assumptions are Windows, RTX 4050 with 6 GB VRAM, and 32 GB RAM; these have not been verified against this machine.
 
 ## Current implementation status
+
+The revised Epic 0 and Epic 1 deltas were implemented on 2026-09-27. Python support is
+standardized on 3.12-3.13. Early `TraceProvider`, `TargetAdapter`, and
+`EvaluationAdapter` protocols and separate Target A/tau3 package boundaries are present;
+their concrete cross-target implementations remain later work. MariaDB remains the
+authorized database adaptation instead of the plan's PostgreSQL proposal.
+
+The existing order-support agent is frozen as `target-a:a0`. Its content, implementation,
+manifest, task data, and evaluator are hash-identified. A machine-readable target
+manifest exports the real tool schemas, while `docs/target_a_inventory.md` documents the
+runtime, prompts, tools, dependencies, budgets, ground truth, and mutable/immutable
+boundaries. Benchmark `target-a-order-support-v1` fixes a 14-task development split and
+six-task held-out split; only development is approved as optimizer feedback. The live
+A0 development baseline completed all 14 executions and passed 9/14, with four output
+truncations and one missing-calculator-evidence failure. It used 24 model calls, 12 tool
+calls, one expected not-found tool error, no retries, and 533,736 ms total latency.
+Committed evidence includes the summary and two successful/two failed trajectories.
 
 Epic 1 was implemented on 2026-09-17 following the user-approved order-support plan.
 The domain is synthetic order support; target business data uses separate MariaDB
@@ -70,9 +99,9 @@ therefore uses MySQL/MariaDB with SQLAlchemy/PyMySQL and Alembic instead of the 
 PostgreSQL proposal. `server.env` stays in the root, ignored by Git; never copy its
 credentials into committed documentation. The database is `TraceFix_DB`.
 
-Python 3.12.10 is available locally; Python 3.11 was not installed. The foundation
-supports Python 3.11–3.13 and is being verified with 3.12. This is an implementation
-adjustment from the plan's suggested 3.11 environment. Optional Docker development
+Python 3.12.10 is available locally; Python 3.11 was not installed. The foundation is
+now standardized on Python 3.12–3.13 and is being verified with 3.12, matching the
+revised plan's tau3 compatibility requirement. Optional Docker development
 uses MariaDB on localhost:3307, separate from the user's existing server.
 
 Build an Agent-as-a-Judge optimizer: observe a target ReAct agent, investigate traces using autonomously selected diagnostic tools, diagnose root causes, create a controlled candidate variant, rerun a fixed benchmark, compare results, and accept or roll back. Persist diagnoses, immutable versions, evaluations, and decisions for audit and future retrieval.

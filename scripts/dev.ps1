@@ -1,6 +1,6 @@
 param(
     [Parameter(Position=0)]
-    [ValidateSet('setup', 'test', 'db-init', 'db-smoke', 'ollama-smoke', 'seed', 'target-demo', 'eval-target')]
+    [ValidateSet('setup', 'test', 'db-init', 'db-smoke', 'ollama-smoke', 'seed', 'target-demo', 'eval-target', 'baseline-a0')]
     [string]$Task = 'test'
 )
 $ErrorActionPreference = 'Stop'
@@ -27,6 +27,8 @@ try {
         & '.venv/Scripts/python.exe' -m tracefix.target_agent.cli --task-id T18
     } elseif ($Task -eq 'eval-target') {
         & '.venv/Scripts/python.exe' -m tracefix.evaluation.runner --subset all
+    } elseif ($Task -eq 'baseline-a0') {
+        & '.venv/Scripts/python.exe' -c 'from tracefix.evaluation.runner import a0_main; raise SystemExit(a0_main())'
     }
     if ($LASTEXITCODE -ne 0) { throw "Task '$Task' failed with exit code $LASTEXITCODE" }
 } finally {

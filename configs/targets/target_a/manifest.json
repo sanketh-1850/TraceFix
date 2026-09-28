@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "target_id": "target-a",
+  "display_name": "TraceFix order-support agent",
+  "orchestration_framework": "LangGraph",
+  "agent_config_version": "order-support-v1",
+  "behavior": {
+    "response_contract": [
+      "answer",
+      "facts",
+      "evidence_ids"
+    ],
+    "requires_retrieved_evidence": true,
+    "tool_errors_are_observations": true,
+    "tools_execute_sequentially": true
+  },
+  "tools": [
+    {
+      "name": "search_documents",
+      "description": "Search local support documents using keywords. Returns ranked excerpts and policy IDs; use lookup_policy for the full policy.",
+      "arguments_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Query",
+            "type": "string"
+          },
+          "limit": {
+            "default": 3,
+            "maximum": 5,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "SearchArguments",
+        "type": "object"
+      },
+      "access": "read_only",
+      "state_changing": false,
+      "data_access": "Reads local policy Markdown files."
+    },
+    {
+      "name": "query_records",
+      "description": "Read business records. entity is customers, products, or orders. Use filters such as {id: ORD-001}. Orders include line items and their prices. No SQL is accepted.",
+      "arguments_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "entity": {
+            "enum": [
+              "customers",
+              "products",
+              "orders"
+            ],
+            "title": "Entity",
+            "type": "string"
+          },
+          "filters": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "maxProperties": 5,
+            "title": "Filters",
+            "type": "object"
+          },
+          "limit": {
+            "default": 10,
+            "maximum": 20,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "entity"
+        ],
+        "title": "QueryArguments",
+        "type": "object"
+      },
+      "access": "read_only",
+      "state_changing": false,
+      "data_access": "Runs allowlisted, parameterized read-only SQL queries."
+    },
+    {
+      "name": "calculator",
+      "description": "Compute arithmetic with numbers, parentheses, +, -, *, and /. Use this for totals and refunds. Returns a decimal result.",
+      "arguments_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "expression": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Expression",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expression"
+        ],
+        "title": "CalculatorArguments",
+        "type": "object"
+      },
+      "access": "read_only",
+      "state_changing": false,
+      "data_access": "Evaluates a restricted arithmetic expression in memory."
+    },
+    {
+      "name": "lookup_policy",
+      "description": "Read a full authoritative support policy by exact ID, such as RETURN-001, SHIP-001, CANCEL-001, DAMAGE-001, WARRANTY-001, or ESCALATE-001.",
+      "arguments_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "policy_id": {
+            "maxLength": 40,
+            "pattern": "^[A-Z]+-\\d{3}$",
+            "title": "Policy Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "policy_id"
+        ],
+        "title": "PolicyArguments",
+        "type": "object"
+      },
+      "access": "read_only",
+      "state_changing": false,
+      "data_access": "Reads one local policy Markdown file by validated ID."
+    }
+  ],
+  "external_dependencies": [
+    "Ollama",
+    "MariaDB",
+    "local policy documents"
+  ]
+}
