@@ -48,3 +48,23 @@ class TargetOrderItem(Base):
     product_id: Mapped[str] = mapped_column(ForeignKey("target_products.id"), primary_key=True)
     quantity: Mapped[int] = mapped_column(Integer)
     unit_price: Mapped[Decimal] = mapped_column(Numeric(10, 2))
+
+
+class TargetRun(Base):
+    __tablename__ = "target_runs"
+
+    run_id: Mapped[str] = mapped_column(String(32), primary_key=True)
+    target_id: Mapped[str] = mapped_column(String(64), index=True)
+    trace_id: Mapped[str | None] = mapped_column(String(32), unique=True, nullable=True)
+    task_id: Mapped[str] = mapped_column(String(64), index=True)
+    agent_version_id: Mapped[str] = mapped_column(String(128), index=True)
+    benchmark_version: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    dataset_version: Mapped[str] = mapped_column(String(128))
+    split: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    model_id: Mapped[str] = mapped_column(String(128))
+    status: Mapped[str] = mapped_column(String(32))
+    terminal_reason: Mapped[str] = mapped_column(String(64))
+    telemetry_status: Mapped[str] = mapped_column(String(32))
+    model_calls: Mapped[int] = mapped_column(Integer)
+    tool_calls: Mapped[int] = mapped_column(Integer)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.current_timestamp())

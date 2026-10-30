@@ -20,6 +20,7 @@ from tracefix.targets.target_a.baseline import (
     load_agent_version,
     load_benchmark_snapshot,
 )
+from tracefix.targets.target_a.observed import run_observed
 
 
 def _tool_retries(observations) -> int:
@@ -76,7 +77,7 @@ def _build_summary(items, tasks, metadata, dataset_hash, config, model, data_has
     }
 
 
-async def evaluate(tasks, config, settings, engine, output, metadata=None):
+async def evaluate(tasks, config, settings, engine, output, metadata=None, telemetry=None):
     if not tasks:
         raise ValueError("Evaluation requires at least one task")
     output.mkdir(parents=True, exist_ok=True)
@@ -97,10 +98,27 @@ async def evaluate(tasks, config, settings, engine, output, metadata=None):
     for task in tasks:
         print(f"Running {task.task_id} ({task.difficulty})...", flush=True)
         try:
-            run = await run_target(
-                task.public_task(), config, tools=ToolEnvironment(engine), settings=settings
-            )
-            path = save_run(run, output)
+            if telemetry is None:
+                run = await run_target(
+                    task.public_task(), config, tools=ToolEnvironment(engine), settings=settings
+                )
+                path = save_run(run, output)
+                trace_id = None
+                telemetry_status = "disabled"
+            else:
+                observed = await run_observed(
+                    task.public_task(),
+                    config,
+                    tools=ToolEnvironment(engine),
+                    settings=settings,
+                    metadata=metadata,
+                    output=output,
+                    telemetry=telemetry,
+                )
+                run = observed.result
+                path = observed.run_file
+                trace_id = observed.trace_id
+                telemetry_status = observed.telemetry_status
             item = score_task(task, run)
             if baseline_hash is None:
                 baseline_hash = run.data_hash
@@ -110,6 +128,8 @@ async def evaluate(tasks, config, settings, engine, output, metadata=None):
             item.update(
                 {
                     "run_id": run.run_id,
+                    "trace_id": trace_id,
+                    "telemetry_status": telemetry_status,
                     "run_file": path.name,
                     "agent_version_id": metadata["agent_version_id"],
                     "difficulty": task.difficulty,
@@ -147,9 +167,7 @@ async def evaluate(tasks, config, settings, engine, output, metadata=None):
         summary = _build_summary(
             items, tasks, metadata, dataset_hash, config, settings.ollama_model, baseline_hash
         )
-        (output / "summary.json").write_text(
-            json.dumps(summary, indent=2) + "\n", encoding="utf-8"
-        )
+        (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     return summary
 
 
@@ -164,7 +182,7 @@ def _parser(*, frozen_a0: bool) -> argparse.ArgumentParser:
     parser.add_argument(
         "--split",
         choices=["development", "held_out", "all"],
-        default="development" if frozen_a0 else "all",
+        default="development",
     )
     parser.add_argument("--subset", choices=["easy", "all"], default="all")
     parser.add_argument("--output-dir", type=Path)
@@ -197,7 +215,7 @@ def _main(*, frozen_a0: bool) -> int:
         agent_version_hash = config.content_hash()
     if not frozen_a0 and args.model:
         settings = settings.model_copy(update={"ollama_model": args.model})
-        agent_version_id = f"{agent_version_id}:model-override"
+        agent_version_id = f"ad-hoc:{config.content_hash()[:12]}:model-override"
 
     tasks = select_tasks(benchmark.task_ids(args.split), load_tasks())
     if args.subset == "easy":
@@ -217,21 +235,23 @@ def _main(*, frozen_a0: bool) -> int:
         / f"{agent_version_id.replace(':', '-')}-{args.split}-{uuid4().hex}"
     )
     engine = make_engine(settings)
+    from tracefix.telemetry.recording import TelemetrySession
+
+    telemetry = TelemetrySession(settings)
     try:
-        result = asyncio.run(evaluate(tasks, config, settings, engine, output, metadata))
+        result = asyncio.run(evaluate(tasks, config, settings, engine, output, metadata, telemetry))
         try:
             artifact_directory = str(output.resolve().relative_to(PROJECT_ROOT))
         except ValueError:
             artifact_directory = str(output.resolve())
         result["artifact_directory"] = artifact_directory.replace("\\", "/")
-        (output / "summary.json").write_text(
-            json.dumps(result, indent=2) + "\n", encoding="utf-8"
-        )
+        (output / "summary.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
         print(f"Passed {result['passed']}/{result['total']}. Results: {output}")
         if frozen_a0:
             return 0 if result["complete"] else 1
         return 0 if result["passed"] == result["total"] else 1
     finally:
+        telemetry.finalize()
         engine.dispose()
 
 

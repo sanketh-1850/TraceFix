@@ -9,8 +9,9 @@ description = "Target-aware agent diagnosis and controlled optimization"
 requires-python = ">=3.12,<3.14"
 dependencies = [
     "alembic>=1.16,<2",
+    "langchain>=1,<2",
     "langchain-ollama>=1,<2",
-    "langfuse>=3,<4",
+    "langfuse>=4.7,<5",
     "langgraph>=1,<2",
     "ollama>=0.6,<1",
     "pydantic>=2.11,<3",
@@ -27,9 +28,10 @@ tau3 = []
 tracefix-db = "tracefix.persistence.cli:main"
 tracefix-smoke-ollama = "tracefix.common.ollama_smoke:main"
 tracefix-seed = "tracefix.target_agent.cli:seed_main"
-tracefix-run-target = "tracefix.target_agent.cli:run_main"
+tracefix-run-target = "tracefix.targets.target_a.telemetry_cli:run_main"
 tracefix-eval-target = "tracefix.evaluation.runner:main"
 tracefix-eval-target-a0 = "tracefix.evaluation.runner:a0_main"
+tracefix-trace = "tracefix.telemetry.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

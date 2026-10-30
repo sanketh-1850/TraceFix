@@ -1,0 +1,1177 @@
+{
+  "verified_on": "2026-10-29 America/Chicago",
+  "verified_at_utc": "2026-10-30T03:21:58.705129+00:00",
+  "langfuse": {
+    "base_url": "https://us.cloud.langfuse.com",
+    "environment": "development",
+    "sdk": "4.15.6",
+    "skill": "https://github.com/langfuse/skills/tree/main/skills/langfuse"
+  },
+  "checks": {
+    "offline_tests_passed": 75,
+    "live_integration_tests_passed": 6,
+    "ruff": "passed",
+    "pip_check": "passed",
+    "migration": "0003_target_runs",
+    "a0_integrity": "passed",
+    "held_out_tasks_executed": 0
+  },
+  "frozen_identity": {
+    "agent_version_id": "target-a:a0",
+    "agent_content_hash": "279930a9d274a4eff71619d368b5d33962a38c6569ff864ebbd775da2d1f74a0",
+    "implementation_hash": "8a5828c8aabbf8b87161c109fa84ef3cff48c984bbaa27284ac1e2de2c5e5550",
+    "benchmark_content_hash": "11da7fbc9e32cb90944c8213f3aef326f8000966ea2438c5217b205f8dee16e8",
+    "historical_development_score": "9/14"
+  },
+  "development_summary": {
+    "target_id": "target-a",
+    "agent_version_id": "target-a:a0",
+    "agent_version_hash": "279930a9d274a4eff71619d368b5d33962a38c6569ff864ebbd775da2d1f74a0",
+    "benchmark_snapshot_id": "target-a-order-support-v1",
+    "dataset_version": "order-support-dataset-v1",
+    "evaluator_version": "order-support-scorer-v1",
+    "split": "development",
+    "dataset_hash": "49243c448da7eba70f6858619fe6267f918a0d383e7832ffcb2e54ed77a7232b",
+    "config_hash": "a3e7f453004c841bce755c258cbe60597910d602b0f01728b80b902834d763c0",
+    "data_hash": "02d4f643e7b6d7a735ef6c3c6b8b11ccaf43aeecb8c6f8f7b11133d7df072760",
+    "model": "qwen3:4b",
+    "complete": true,
+    "total": 14,
+    "passed": 8,
+    "success_rate": 0.5714285714285714,
+    "easy_passed": 6,
+    "easy_total": 7,
+    "metrics": {
+      "task_count": 14,
+      "passed": 8,
+      "failed": 6,
+      "success_rate": 0.5714285714285714,
+      "input_tokens": 24809,
+      "input_tokens_known_tasks": 14,
+      "output_tokens": 24918,
+      "output_tokens_known_tasks": 14,
+      "model_calls": 23,
+      "tool_calls": 11,
+      "tool_errors": 1,
+      "tool_retries": 0,
+      "latency_ms_total": 435902.881,
+      "latency_ms_mean": 31135.92,
+      "latency_ms_p95": 42103.669
+    },
+    "items": [
+      {
+        "task_id": "T01",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "query_records"
+        ],
+        "run_id": "fa2ab3637658408999769e72e551f926",
+        "trace_id": "1a6fcc77513b42ba85e3056b036cedf4",
+        "telemetry_status": "pending",
+        "run_file": "fa2ab3637658408999769e72e551f926.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "easy",
+        "input_tokens": 2019,
+        "output_tokens": 1606,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 28457.522,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T02",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "query_records"
+        ],
+        "run_id": "62ea4a72ff0845cd9b2f3577d0cf1449",
+        "trace_id": "3eb88dc6d9594000a2670b776bc90cb2",
+        "telemetry_status": "pending",
+        "run_file": "62ea4a72ff0845cd9b2f3577d0cf1449.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "easy",
+        "input_tokens": 2052,
+        "output_tokens": 1334,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 23180.418,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T04",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "query_records"
+        ],
+        "run_id": "54c4339173bf4c7c9bfeccdf1b4d2d61",
+        "trace_id": "9d9da773dda2407093ad85ca6a81558c",
+        "telemetry_status": "pending",
+        "run_file": "54c4339173bf4c7c9bfeccdf1b4d2d61.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "easy",
+        "input_tokens": 1988,
+        "output_tokens": 806,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 13927.455,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T05",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "query_records"
+        ],
+        "run_id": "3907f6174d2c4c088dbbd055ec1c9e4a",
+        "trace_id": "9822a071c4654581b1ac2a9cb9edb098",
+        "telemetry_status": "pending",
+        "run_file": "3907f6174d2c4c088dbbd055ec1c9e4a.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "easy",
+        "input_tokens": 2137,
+        "output_tokens": 988,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 17079.005,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T06",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "lookup_policy"
+        ],
+        "run_id": "59f758388454453d8c4023d7783e5df7",
+        "trace_id": "c3ce9c35bd3f47de8aacd503981f61f1",
+        "telemetry_status": "pending",
+        "run_file": "59f758388454453d8c4023d7783e5df7.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "easy",
+        "input_tokens": 2429,
+        "output_tokens": 1408,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 24620.909,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T08",
+        "success": false,
+        "reasons": [
+          "incomplete:truncated_generation",
+          "missing_answer"
+        ],
+        "expected_tools_used": false,
+        "tools_used": [],
+        "run_id": "0cadd826f6c04c1d9a5ba8a728378113",
+        "trace_id": "8e1eb3345bb34771a95b86de0ecbff46",
+        "telemetry_status": "pending",
+        "run_file": "0cadd826f6c04c1d9a5ba8a728378113.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "easy",
+        "input_tokens": 633,
+        "output_tokens": 2048,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 35432.255,
+        "terminal_reason": "truncated_generation"
+      },
+      {
+        "task_id": "T10",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "calculator"
+        ],
+        "run_id": "43faf53dd18d47bab2e4a031ab6b0d18",
+        "trace_id": "11126637e53d4b7da66432e86722b7ae",
+        "telemetry_status": "pending",
+        "run_file": "43faf53dd18d47bab2e4a031ab6b0d18.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "easy",
+        "input_tokens": 2108,
+        "output_tokens": 2146,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 37725.22,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T11",
+        "success": false,
+        "reasons": [
+          "incomplete:truncated_generation",
+          "missing_answer"
+        ],
+        "expected_tools_used": false,
+        "tools_used": [],
+        "run_id": "3c3deabca61945b59d36ac8a5cf8cbe1",
+        "trace_id": "b953422c28a0415db06cf4439e3b46f7",
+        "telemetry_status": "pending",
+        "run_file": "3c3deabca61945b59d36ac8a5cf8cbe1.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "multi",
+        "input_tokens": 647,
+        "output_tokens": 2048,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 35432.431,
+        "terminal_reason": "truncated_generation"
+      },
+      {
+        "task_id": "T12",
+        "success": false,
+        "reasons": [
+          "incomplete:truncated_generation",
+          "missing_answer"
+        ],
+        "expected_tools_used": false,
+        "tools_used": [],
+        "run_id": "659601328e58488c8af2356fcee50f79",
+        "trace_id": "c1a35343f1234abeb4edf7d2bf04b2e4",
+        "telemetry_status": "pending",
+        "run_file": "659601328e58488c8af2356fcee50f79.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "multi",
+        "input_tokens": 634,
+        "output_tokens": 2048,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 35447.504,
+        "terminal_reason": "truncated_generation"
+      },
+      {
+        "task_id": "T14",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "lookup_policy",
+          "query_records"
+        ],
+        "run_id": "1f3dd4df659c449fbdac8a79c190b865",
+        "trace_id": "157c76182cc442c99335bae020db88db",
+        "telemetry_status": "pending",
+        "run_file": "1f3dd4df659c449fbdac8a79c190b865.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "multi",
+        "input_tokens": 2885,
+        "output_tokens": 2358,
+        "model_calls": 2,
+        "tool_calls": 2,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 42103.669,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T15",
+        "success": false,
+        "reasons": [
+          "incomplete:truncated_generation",
+          "missing_answer"
+        ],
+        "expected_tools_used": false,
+        "tools_used": [],
+        "run_id": "e3908d7b49a5407789b9151dbb1a03bb",
+        "trace_id": "fa509459e04742ffa0ae0941bdb658a8",
+        "telemetry_status": "pending",
+        "run_file": "e3908d7b49a5407789b9151dbb1a03bb.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "multi",
+        "input_tokens": 646,
+        "output_tokens": 2048,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 35460.736,
+        "terminal_reason": "truncated_generation"
+      },
+      {
+        "task_id": "T16",
+        "success": false,
+        "reasons": [
+          "missing_calculation_evidence"
+        ],
+        "expected_tools_used": false,
+        "tools_used": [
+          "lookup_policy",
+          "query_records"
+        ],
+        "run_id": "1099e76d4aae4b3fac546ef5e72d98aa",
+        "trace_id": "5e545556ea2a4823b018bdb0fd036434",
+        "telemetry_status": "pending",
+        "run_file": "1099e76d4aae4b3fac546ef5e72d98aa.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "multi",
+        "input_tokens": 3420,
+        "output_tokens": 2339,
+        "model_calls": 2,
+        "tool_calls": 2,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 41859.699,
+        "terminal_reason": "completed"
+      },
+      {
+        "task_id": "T17",
+        "success": false,
+        "reasons": [
+          "incomplete:truncated_generation",
+          "missing_answer"
+        ],
+        "expected_tools_used": false,
+        "tools_used": [],
+        "run_id": "62deab0c09bb4f7fa7a7e03ec5e8d30d",
+        "trace_id": "1720a414da5c4590832741dc4a34fead",
+        "telemetry_status": "pending",
+        "run_file": "62deab0c09bb4f7fa7a7e03ec5e8d30d.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "multi",
+        "input_tokens": 646,
+        "output_tokens": 2048,
+        "model_calls": 1,
+        "tool_calls": 0,
+        "tool_errors": 0,
+        "tool_retries": 0,
+        "latency_ms": 35442.611,
+        "terminal_reason": "truncated_generation"
+      },
+      {
+        "task_id": "T19",
+        "success": true,
+        "reasons": [],
+        "expected_tools_used": true,
+        "tools_used": [
+          "query_records"
+        ],
+        "run_id": "6b7aa5b667ea48d988437a2bf3dc896a",
+        "trace_id": "743cc9c459434130900d483cb2ab40d7",
+        "telemetry_status": "pending",
+        "run_file": "6b7aa5b667ea48d988437a2bf3dc896a.json",
+        "agent_version_id": "target-a:a0",
+        "difficulty": "recovery",
+        "input_tokens": 2565,
+        "output_tokens": 1693,
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 1,
+        "tool_retries": 0,
+        "latency_ms": 29733.447,
+        "terminal_reason": "completed"
+      }
+    ],
+    "artifact_directory": "artifacts/epic2/development"
+  },
+  "development_verification": {
+    "summary": "artifacts\\epic2\\development\\summary.json",
+    "verified": true,
+    "items": [
+      {
+        "task_id": "T01",
+        "run_id": "fa2ab3637658408999769e72e551f926",
+        "trace_id": "1a6fcc77513b42ba85e3056b036cedf4",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:05:24Z",
+        "metrics": {
+          "run_id": "fa2ab3637658408999769e72e551f926",
+          "trace_id": "1a6fcc77513b42ba85e3056b036cedf4",
+          "model_calls": 2,
+          "tool_calls": 1,
+          "tool_errors": 0,
+          "input_tokens": 2019,
+          "output_tokens": 1606,
+          "latency_ms": 28459.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "f3cfe37cc4538de4",
+          "4c83511e3d4312a0",
+          "0b48952c8b9eaac0",
+          "b49f36601480be4b"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T02",
+        "run_id": "62ea4a72ff0845cd9b2f3577d0cf1449",
+        "trace_id": "3eb88dc6d9594000a2670b776bc90cb2",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:05:52Z",
+        "metrics": {
+          "run_id": "62ea4a72ff0845cd9b2f3577d0cf1449",
+          "trace_id": "3eb88dc6d9594000a2670b776bc90cb2",
+          "model_calls": 2,
+          "tool_calls": 1,
+          "tool_errors": 0,
+          "input_tokens": 2052,
+          "output_tokens": 1334,
+          "latency_ms": 23181.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "f79155a880c70488",
+          "541ff85a54156009",
+          "3b3047be0e0f4a40",
+          "444f104f83fa4d76"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T04",
+        "run_id": "54c4339173bf4c7c9bfeccdf1b4d2d61",
+        "trace_id": "9d9da773dda2407093ad85ca6a81558c",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:06:16Z",
+        "metrics": {
+          "run_id": "54c4339173bf4c7c9bfeccdf1b4d2d61",
+          "trace_id": "9d9da773dda2407093ad85ca6a81558c",
+          "model_calls": 2,
+          "tool_calls": 1,
+          "tool_errors": 0,
+          "input_tokens": 1988,
+          "output_tokens": 806,
+          "latency_ms": 13928.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "c9fc1cfe218de664",
+          "cab8797565053d01",
+          "3cb17b32716075ae",
+          "52b8c42ed2b50f67"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T05",
+        "run_id": "3907f6174d2c4c088dbbd055ec1c9e4a",
+        "trace_id": "9822a071c4654581b1ac2a9cb9edb098",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:06:30Z",
+        "metrics": {
+          "run_id": "3907f6174d2c4c088dbbd055ec1c9e4a",
+          "trace_id": "9822a071c4654581b1ac2a9cb9edb098",
+          "model_calls": 2,
+          "tool_calls": 1,
+          "tool_errors": 0,
+          "input_tokens": 2137,
+          "output_tokens": 988,
+          "latency_ms": 17080.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "1cb763ce5017abfb",
+          "274a32244cb60b2f",
+          "f313f0abb57ff5cc",
+          "d85b1fbc03aced4f"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T06",
+        "run_id": "59f758388454453d8c4023d7783e5df7",
+        "trace_id": "c3ce9c35bd3f47de8aacd503981f61f1",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:06:47Z",
+        "metrics": {
+          "run_id": "59f758388454453d8c4023d7783e5df7",
+          "trace_id": "c3ce9c35bd3f47de8aacd503981f61f1",
+          "model_calls": 2,
+          "tool_calls": 1,
+          "tool_errors": 0,
+          "input_tokens": 2429,
+          "output_tokens": 1408,
+          "latency_ms": 24621.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "b0a063fbe19857f3",
+          "b998f994647bb590",
+          "27c1fdfe0eaab7c8",
+          "75f4cdac98af76c0"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T08",
+        "run_id": "0cadd826f6c04c1d9a5ba8a728378113",
+        "trace_id": "8e1eb3345bb34771a95b86de0ecbff46",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "failed",
+        "terminal_reason": "truncated_generation",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:07:12Z",
+        "metrics": {
+          "run_id": "0cadd826f6c04c1d9a5ba8a728378113",
+          "trace_id": "8e1eb3345bb34771a95b86de0ecbff46",
+          "model_calls": 1,
+          "tool_calls": 0,
+          "tool_errors": 0,
+          "input_tokens": 633,
+          "output_tokens": 2048,
+          "latency_ms": 35433.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "5be422cd56ebeffb",
+          "06a05d4c204b87d4"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T10",
+        "run_id": "43faf53dd18d47bab2e4a031ab6b0d18",
+        "trace_id": "11126637e53d4b7da66432e86722b7ae",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:07:48Z",
+        "metrics": {
+          "run_id": "43faf53dd18d47bab2e4a031ab6b0d18",
+          "trace_id": "11126637e53d4b7da66432e86722b7ae",
+          "model_calls": 2,
+          "tool_calls": 1,
+          "tool_errors": 0,
+          "input_tokens": 2108,
+          "output_tokens": 2146,
+          "latency_ms": 37727.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "ca0c5290ffdeb09c",
+          "0b1cf9f602bb926e",
+          "ccad982405d8d3ad",
+          "39f64ebe5bbb29c4"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T11",
+        "run_id": "3c3deabca61945b59d36ac8a5cf8cbe1",
+        "trace_id": "b953422c28a0415db06cf4439e3b46f7",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "failed",
+        "terminal_reason": "truncated_generation",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:08:26Z",
+        "metrics": {
+          "run_id": "3c3deabca61945b59d36ac8a5cf8cbe1",
+          "trace_id": "b953422c28a0415db06cf4439e3b46f7",
+          "model_calls": 1,
+          "tool_calls": 0,
+          "tool_errors": 0,
+          "input_tokens": 647,
+          "output_tokens": 2048,
+          "latency_ms": 35433.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "aa88fcb385592a02",
+          "985a84bedc89fbff"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T12",
+        "run_id": "659601328e58488c8af2356fcee50f79",
+        "trace_id": "c1a35343f1234abeb4edf7d2bf04b2e4",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "failed",
+        "terminal_reason": "truncated_generation",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:09:02Z",
+        "metrics": {
+          "run_id": "659601328e58488c8af2356fcee50f79",
+          "trace_id": "c1a35343f1234abeb4edf7d2bf04b2e4",
+          "model_calls": 1,
+          "tool_calls": 0,
+          "tool_errors": 0,
+          "input_tokens": 634,
+          "output_tokens": 2048,
+          "latency_ms": 35448.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "a1c517c16fbb33eb",
+          "e54d18124f0b3777"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T14",
+        "run_id": "1f3dd4df659c449fbdac8a79c190b865",
+        "trace_id": "157c76182cc442c99335bae020db88db",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:09:38Z",
+        "metrics": {
+          "run_id": "1f3dd4df659c449fbdac8a79c190b865",
+          "trace_id": "157c76182cc442c99335bae020db88db",
+          "model_calls": 2,
+          "tool_calls": 2,
+          "tool_errors": 0,
+          "input_tokens": 2885,
+          "output_tokens": 2358,
+          "latency_ms": 42105.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "e00d3af167ad0a08",
+          "0f77028e194909b1",
+          "202c6107fde982a0",
+          "39535a3c3f9ec3f9",
+          "7289c8cb17b7bf1a"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T15",
+        "run_id": "e3908d7b49a5407789b9151dbb1a03bb",
+        "trace_id": "fa509459e04742ffa0ae0941bdb658a8",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "failed",
+        "terminal_reason": "truncated_generation",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:10:20Z",
+        "metrics": {
+          "run_id": "e3908d7b49a5407789b9151dbb1a03bb",
+          "trace_id": "fa509459e04742ffa0ae0941bdb658a8",
+          "model_calls": 1,
+          "tool_calls": 0,
+          "tool_errors": 0,
+          "input_tokens": 646,
+          "output_tokens": 2048,
+          "latency_ms": 35462.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "cc96e94e7c6fe572",
+          "a4f260eb6411a51f"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T16",
+        "run_id": "1099e76d4aae4b3fac546ef5e72d98aa",
+        "trace_id": "5e545556ea2a4823b018bdb0fd036434",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:10:56Z",
+        "metrics": {
+          "run_id": "1099e76d4aae4b3fac546ef5e72d98aa",
+          "trace_id": "5e545556ea2a4823b018bdb0fd036434",
+          "model_calls": 2,
+          "tool_calls": 2,
+          "tool_errors": 0,
+          "input_tokens": 3420,
+          "output_tokens": 2339,
+          "latency_ms": 41862.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "bec838916bf2f5ed",
+          "c849849008a51305",
+          "cfc8b9276aeb683b",
+          "8692b4450ddc0f36",
+          "56c1a681c2f2e874"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T17",
+        "run_id": "62deab0c09bb4f7fa7a7e03ec5e8d30d",
+        "trace_id": "1720a414da5c4590832741dc4a34fead",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "failed",
+        "terminal_reason": "truncated_generation",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:11:38Z",
+        "metrics": {
+          "run_id": "62deab0c09bb4f7fa7a7e03ec5e8d30d",
+          "trace_id": "1720a414da5c4590832741dc4a34fead",
+          "model_calls": 1,
+          "tool_calls": 0,
+          "tool_errors": 0,
+          "input_tokens": 646,
+          "output_tokens": 2048,
+          "latency_ms": 35443.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "73f599535b9b443b",
+          "c69de4190f3ef6be"
+        ],
+        "verification_issues": []
+      },
+      {
+        "task_id": "T19",
+        "run_id": "6b7aa5b667ea48d988437a2bf3dc896a",
+        "trace_id": "743cc9c459434130900d483cb2ab40d7",
+        "target_id": "target-a",
+        "agent_version_id": "target-a:a0",
+        "dataset_version": "order-support-dataset-v1",
+        "benchmark_version": "target-a-order-support-v1",
+        "model_id": "qwen3:4b",
+        "status": "completed",
+        "terminal_reason": "completed",
+        "telemetry_status": "verified",
+        "started_at": "2026-10-30T03:12:14Z",
+        "metrics": {
+          "run_id": "6b7aa5b667ea48d988437a2bf3dc896a",
+          "trace_id": "743cc9c459434130900d483cb2ab40d7",
+          "model_calls": 2,
+          "tool_calls": 1,
+          "tool_errors": 1,
+          "input_tokens": 2565,
+          "output_tokens": 1693,
+          "latency_ms": 29735.0,
+          "usage_complete": true
+        },
+        "observation_ids": [
+          "064ea4b9997a0887",
+          "c6bf29c66d063a4a",
+          "d4dd2d63cbd2f4c5",
+          "82ae0877752ad551"
+        ],
+        "verification_issues": []
+      }
+    ]
+  },
+  "smoke_verification": [
+    {
+      "run_id": "ca2fdb7f7e8b427fb0cec3036fb2e9be",
+      "trace_id": "2284a5306abf4765b2f9bff30b1c12a4",
+      "target_id": "target-a",
+      "task_id": "T01",
+      "agent_version_id": "target-a:a0",
+      "dataset_version": "order-support-dataset-v1",
+      "benchmark_version": "target-a-order-support-v1",
+      "model_id": "qwen3:4b",
+      "status": "completed",
+      "terminal_reason": "completed",
+      "telemetry_status": "verified",
+      "started_at": "2026-10-30T03:03:03Z",
+      "metrics": {
+        "run_id": "ca2fdb7f7e8b427fb0cec3036fb2e9be",
+        "trace_id": "2284a5306abf4765b2f9bff30b1c12a4",
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "input_tokens": 2014,
+        "output_tokens": 807,
+        "latency_ms": 14258.0,
+        "usage_complete": true
+      },
+      "observation_ids": [
+        "f3744f577ff51bfc",
+        "8ec42176c139dd4c",
+        "ffa775d7b2bad07e",
+        "5572a5ec4c275357"
+      ],
+      "verification_issues": []
+    },
+    {
+      "run_id": "5b0d70f9acfe4b7cab3dcbd047e9fc03",
+      "trace_id": "0da1141d7059446fbba5ff123281ac79",
+      "target_id": "target-a",
+      "task_id": "T06",
+      "agent_version_id": "target-a:a0",
+      "dataset_version": "order-support-dataset-v1",
+      "benchmark_version": "target-a-order-support-v1",
+      "model_id": "qwen3:4b",
+      "status": "completed",
+      "terminal_reason": "completed",
+      "telemetry_status": "verified",
+      "started_at": "2026-10-30T03:03:18Z",
+      "metrics": {
+        "run_id": "5b0d70f9acfe4b7cab3dcbd047e9fc03",
+        "trace_id": "0da1141d7059446fbba5ff123281ac79",
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "input_tokens": 1942,
+        "output_tokens": 846,
+        "latency_ms": 14627.0,
+        "usage_complete": true
+      },
+      "observation_ids": [
+        "52c97a59e5942937",
+        "17577ee97e2fef11",
+        "e84ab51ecce3f833",
+        "9744735031c53531"
+      ],
+      "verification_issues": []
+    },
+    {
+      "run_id": "d18ff9bc0216485bb201e8d0fcbf078c",
+      "trace_id": "13b847eda1af4fdd9261a8b6bb9c3b97",
+      "target_id": "target-a",
+      "task_id": "T08",
+      "agent_version_id": "target-a:a0",
+      "dataset_version": "order-support-dataset-v1",
+      "benchmark_version": "target-a-order-support-v1",
+      "model_id": "qwen3:4b",
+      "status": "completed",
+      "terminal_reason": "completed",
+      "telemetry_status": "verified",
+      "started_at": "2026-10-30T03:03:33Z",
+      "metrics": {
+        "run_id": "d18ff9bc0216485bb201e8d0fcbf078c",
+        "trace_id": "13b847eda1af4fdd9261a8b6bb9c3b97",
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "input_tokens": 2612,
+        "output_tokens": 1546,
+        "latency_ms": 27712.0,
+        "usage_complete": true
+      },
+      "observation_ids": [
+        "acc7070224378d1e",
+        "fbee2962338d7a11",
+        "756de321816449b2",
+        "d1881a6b93ed91cd"
+      ],
+      "verification_issues": []
+    },
+    {
+      "run_id": "7bd865f3cca640bfa8b13db411b2fe59",
+      "trace_id": "c2fde7f914d243f6af31f991f4c488da",
+      "target_id": "target-a",
+      "task_id": "T10",
+      "agent_version_id": "target-a:a0",
+      "dataset_version": "order-support-dataset-v1",
+      "benchmark_version": "target-a-order-support-v1",
+      "model_id": "qwen3:4b",
+      "status": "completed",
+      "terminal_reason": "completed",
+      "telemetry_status": "verified",
+      "started_at": "2026-10-30T03:04:01Z",
+      "metrics": {
+        "run_id": "7bd865f3cca640bfa8b13db411b2fe59",
+        "trace_id": "c2fde7f914d243f6af31f991f4c488da",
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 0,
+        "input_tokens": 2001,
+        "output_tokens": 1229,
+        "latency_ms": 21293.0,
+        "usage_complete": true
+      },
+      "observation_ids": [
+        "7be17c4c94a52166",
+        "e171a8e07769ea7b",
+        "328af7ce7af5ff70",
+        "c522454fdef6f001"
+      ],
+      "verification_issues": []
+    }
+  ],
+  "failure_verification": [
+    {
+      "run_id": "d029019b48ee44aaab52d097baea777f",
+      "trace_id": "629a16d56f88485da0d44d5f21fc40d1",
+      "target_id": "target-a",
+      "task_id": "T01",
+      "agent_version_id": "ad-hoc:tool-outage",
+      "dataset_version": "telemetry-fixtures-v1",
+      "benchmark_version": null,
+      "model_id": "qwen3:4b",
+      "status": "completed",
+      "terminal_reason": "completed",
+      "telemetry_status": "verified",
+      "started_at": "2026-10-30T03:13:24Z",
+      "metrics": {
+        "run_id": "d029019b48ee44aaab52d097baea777f",
+        "trace_id": "629a16d56f88485da0d44d5f21fc40d1",
+        "model_calls": 2,
+        "tool_calls": 1,
+        "tool_errors": 1,
+        "input_tokens": 1925,
+        "output_tokens": 972,
+        "latency_ms": 17154.0,
+        "usage_complete": true
+      },
+      "observation_ids": [
+        "c5db8996693a38be",
+        "f22ad7af2822d4eb",
+        "f7f7ba520520c31f",
+        "c3dc8ea1aac82260"
+      ],
+      "verification_issues": [],
+      "scenario": "tool-outage",
+      "correctness": {
+        "task_id": "T01",
+        "success": false,
+        "reasons": [
+          "incorrect_fact:status",
+          "missing_required_sources"
+        ],
+        "expected_tools_used": true,
+        "tools_used": [
+          "query_records"
+        ]
+      }
+    },
+    {
+      "run_id": "493ca3bb1dd34a28b767ca6be8f4f615",
+      "trace_id": "73a76b1f62444cad92bd0f8f505cff5e",
+      "target_id": "target-a",
+      "task_id": "T01",
+      "agent_version_id": "ad-hoc:model-error",
+      "dataset_version": "telemetry-fixtures-v1",
+      "benchmark_version": null,
+      "model_id": "fixture-model",
+      "status": "failed",
+      "terminal_reason": "model_unavailable",
+      "telemetry_status": "verified",
+      "started_at": "2026-10-30T03:13:56Z",
+      "metrics": {
+        "run_id": "493ca3bb1dd34a28b767ca6be8f4f615",
+        "trace_id": "73a76b1f62444cad92bd0f8f505cff5e",
+        "model_calls": 1,
+        "tool_calls": 0,
+        "tool_errors": 0,
+        "input_tokens": null,
+        "output_tokens": null,
+        "latency_ms": 41.0,
+        "usage_complete": false
+      },
+      "observation_ids": [
+        "fa4092439e1af375",
+        "d9ad19cb9bbff732"
+      ],
+      "verification_issues": [],
+      "scenario": "model-error",
+      "correctness": {
+        "task_id": "T01",
+        "success": false,
+        "reasons": [
+          "incomplete:model_unavailable",
+          "missing_answer"
+        ],
+        "expected_tools_used": false,
+        "tools_used": []
+      }
+    },
+    {
+      "run_id": "68c7dafe677a479ea3e9f4ab7bc54725",
+      "trace_id": "da70b7a9f4e842d29da2fccf57cc64e0",
+      "target_id": "target-a",
+      "task_id": "T01",
+      "agent_version_id": "ad-hoc:truncation",
+      "dataset_version": "telemetry-fixtures-v1",
+      "benchmark_version": null,
+      "model_id": "fixture-model",
+      "status": "failed",
+      "terminal_reason": "truncated_generation",
+      "telemetry_status": "verified",
+      "started_at": "2026-10-30T03:14:08Z",
+      "metrics": {
+        "run_id": "68c7dafe677a479ea3e9f4ab7bc54725",
+        "trace_id": "da70b7a9f4e842d29da2fccf57cc64e0",
+        "model_calls": 1,
+        "tool_calls": 0,
+        "tool_errors": 0,
+        "input_tokens": 10,
+        "output_tokens": 5,
+        "latency_ms": 22.0,
+        "usage_complete": true
+      },
+      "observation_ids": [
+        "64f833878ddcd153",
+        "bdd07b78d0f9e746"
+      ],
+      "verification_issues": [],
+      "scenario": "truncation",
+      "correctness": {
+        "task_id": "T01",
+        "success": false,
+        "reasons": [
+          "incomplete:truncated_generation",
+          "missing_answer"
+        ],
+        "expected_tools_used": false,
+        "tools_used": []
+      }
+    }
+  ],
+  "judge_verification": [
+    {
+      "judge_run_id": "a53a569221ba43bb9fbd64810ef54d34",
+      "trace_id": "89d6a81d517f4410a1a11e3454a84f7a",
+      "mode": "generic",
+      "source_target_run_id": "ca2fdb7f7e8b427fb0cec3036fb2e9be",
+      "verified": true,
+      "input_tokens": 2,
+      "output_tokens": 3,
+      "fallback_used": false,
+      "diagnosis": {
+        "failure_type": "unknown",
+        "simulation": true
+      }
+    },
+    {
+      "judge_run_id": "e1659ee86e5a4cb493070c36802068de",
+      "trace_id": "7ede3e9a88574ac4ab20541936d09a4d",
+      "mode": "specialized",
+      "source_target_run_id": "ca2fdb7f7e8b427fb0cec3036fb2e9be",
+      "verified": true,
+      "input_tokens": 2,
+      "output_tokens": 3,
+      "fallback_used": true,
+      "diagnosis": {
+        "failure_type": "unknown",
+        "simulation": true
+      }
+    }
+  ],
+  "official_cli_audit": [
+    {
+      "kind": "target",
+      "trace_id": "2284a5306abf4765b2f9bff30b1c12a4",
+      "project_id": "cmvuamuz900lbad0eendys9z5",
+      "observation_names": [
+        "generate-target-response",
+        "query_records",
+        "generate-target-response",
+        "tracefix-target-a"
+      ],
+      "generations": 2,
+      "tools": 1,
+      "meaningful_root_io": true,
+      "secrets_absent": true
+    },
+    {
+      "kind": "failure",
+      "trace_id": "629a16d56f88485da0d44d5f21fc40d1",
+      "project_id": "cmvuamuz900lbad0eendys9z5",
+      "observation_names": [
+        "generate-target-response",
+        "query_records",
+        "generate-target-response",
+        "tracefix-target-a"
+      ],
+      "generations": 2,
+      "tools": 1,
+      "meaningful_root_io": true,
+      "secrets_absent": true
+    },
+    {
+      "kind": "judge",
+      "trace_id": "7ede3e9a88574ac4ab20541936d09a4d",
+      "project_id": "cmvuamuz900lbad0eendys9z5",
+      "observation_names": [
+        "simulate-diagnosis",
+        "tracefix-judge",
+        "inspect-run"
+      ],
+      "generations": 1,
+      "tools": 1,
+      "meaningful_root_io": true,
+      "secrets_absent": true
+    }
+  ]
+}

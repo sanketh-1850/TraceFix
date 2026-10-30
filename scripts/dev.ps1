@@ -24,9 +24,9 @@ try {
     } elseif ($Task -eq 'seed') {
         & '.venv/Scripts/python.exe' -c 'from tracefix.target_agent.cli import seed_main; raise SystemExit(seed_main())'
     } elseif ($Task -eq 'target-demo') {
-        & '.venv/Scripts/python.exe' -m tracefix.target_agent.cli --task-id T18
+        & '.venv/Scripts/tracefix-run-target.exe' --task-id T12
     } elseif ($Task -eq 'eval-target') {
-        & '.venv/Scripts/python.exe' -m tracefix.evaluation.runner --subset all
+        & '.venv/Scripts/python.exe' -m tracefix.evaluation.runner --split development
     } elseif ($Task -eq 'baseline-a0') {
         & '.venv/Scripts/python.exe' -c 'from tracefix.evaluation.runner import a0_main; raise SystemExit(a0_main())'
     }

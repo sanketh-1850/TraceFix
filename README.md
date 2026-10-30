@@ -13,3 +13,8 @@ TraceFix works across two targets through shared execution and evaluation adapte
 Evaluation also compares generic and target-aware Judges on the same labeled traces. It measures diagnosis accuracy, precision, recall, inference cost, and latency alongside the effect of proposed fixes on target performance. Development tasks support optimization, while held-out tasks provide a separate final assessment.
 
 The system uses Python and LangGraph for agent workflows, Langfuse for observability, Ollama for local model inference, and MariaDB for durable experiment history. It retains accepted and rejected changes so later investigations can draw on previous findings while grounding each new diagnosis in the current trace.
+
+Implementation progress and verification are recorded in [project context](docs/PROJECT_CONTEXT.md).
+For the implemented Target A tracing setup, inspection commands, and real trace examples,
+see [Epic 2 status](docs/EPIC2_STATUS.md). Judge and optimizer behavior described above
+belongs to subsequent epics.

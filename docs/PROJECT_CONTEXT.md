@@ -24,10 +24,26 @@ Both documents say their technical references were checked in September 2026. Th
 
 ## Current implementation status
 
+Epic 2 observability was completed and verified on 2026-10-29 using US Langfuse Cloud
+Hobby and SDK 4.15.6. The Target A wrapper preserves frozen A0 and indexes its run IDs
+in MariaDB `target_runs`. All 14 development traces, four smoke traces, and three
+separate failure traces were retrieved and verified. Generic and specialized simulated
+Judge traces have separate identities, source-run links, usage, diagnostic tools,
+fallback flags, and diagnosis output. Both TraceProvider implementations pass captured
+Cloud fixture contracts. All 75 offline tests, six live integrations, Ruff, dependency
+checks, and A0 integrity checks pass; MariaDB is at `0003_target_runs`.
+
+The new development run scored 8/14 (five truncations and one missing-calculator-evidence
+failure); the historical 9/14 A0 baseline remains preserved. No held-out task was run
+for Epic 2 acceptance. `LANGFUSE_BASE_URL` is now supported alongside `LANGFUSE_HOST`.
+The user chose US Cloud Hobby over self-hosting and authorized installing the official
+Langfuse skill. Credentials remain in ignored local configuration. See
+[Epic 2 status](EPIC2_STATUS.md) and [acceptance evidence](examples/epic2-verification.json).
+
 The revised Epic 0 and Epic 1 deltas were implemented on 2026-09-27. Python support is
 standardized on 3.12-3.13. Early `TraceProvider`, `TargetAdapter`, and
 `EvaluationAdapter` protocols and separate Target A/tau3 package boundaries are present;
-their concrete cross-target implementations remain later work. MariaDB remains the
+concrete TargetAdapter/EvaluationAdapter implementations remain Epic 3 work. MariaDB remains the
 authorized database adaptation instead of the plan's PostgreSQL proposal.
 
 The existing order-support agent is frozen as `target-a:a0`. Its content, implementation,
@@ -43,13 +59,13 @@ Committed evidence includes the summary and two successful/two failed trajectori
 
 Epic 1 was implemented on 2026-09-17 following the user-approved order-support plan.
 The domain is synthetic order support; target business data uses separate MariaDB
-tables in `TraceFix_DB`. Migration `0002_target_data` is current. Fixtures contain
+tables in `TraceFix_DB`. Migration `0002_target_data` was current at that milestone. Fixtures contain
 10 customers, 8 products, 30 orders, 31 line items, and six local policy documents.
 The agent returns a readable answer plus structured facts and evidence IDs.
 
 The four read-only tools are `search_documents`, `query_records`, `calculator`,
-and `lookup_policy`. A bounded LangGraph ReAct loop records local runs; no Langfuse
-integration or Judge exists yet. Prompts, tool descriptions, and limits are in
+and `lookup_policy`. At that milestone, a bounded LangGraph ReAct loop recorded local
+runs without Langfuse or a Judge. Prompts, tool descriptions, and limits are in
 `configs/agents/order_support.json`. Target runs use Qwen3 4B with reasoning enabled
 and a 2048-token output limit: the initial disabled-thinking/512-token pilot truncated
 before tool calling with the installed template. This adjustment is explicit and
@@ -63,7 +79,7 @@ T18 demonstrates query -> calculator -> final answer across three model calls.
 Five tasks truncated and one omitted required calculator evidence; these failures
 are preserved. Ground truth is in the evaluator's versioned task dataset and is never
 passed to the target agent. See [Epic 1 verification](EPIC1_STATUS.md) and its committed
-sample records. Epic 2 is still needed to complete M1 observability.
+sample records. Epic 2 subsequently completed M1 observability on 2026-10-29.
 
 Commands: `tracefix-seed`, `tracefix-run-target`, and `tracefix-eval-target`, plus the
 `seed`, `target-demo`, and `eval-target` PowerShell helper tasks. Live failure injection
